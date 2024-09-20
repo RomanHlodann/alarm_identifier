@@ -36,8 +36,6 @@ async def check_if_alarm_really_dangerous():
     ten_minutes_ago = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(minutes=10)
 
     async for message in client.iter_messages(chat, limit=50):
-        print("here")
-        print(message.message)
         if message.date > ten_minutes_ago:
             if check_if_message_contains_dangerous_words(message.message):
                 send_notifications()
