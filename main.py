@@ -40,8 +40,7 @@ async def check_if_alarm_really_dangerous():
     async for message in client.iter_messages(chat, limit=50):
         if message.date > ten_minutes_ago:
             if check_if_message_contains_dangerous_words(message.message):
-                send_notifications()
-                return
+                send_notifications(message.message)
 
 
 async def main():
